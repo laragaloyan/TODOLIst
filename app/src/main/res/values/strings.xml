@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">ToDoList</string>
+    <string name="action_settings">Settings</string>
+    <string name="label_title">title</string>
+    <string name="label_description">(description)</string>
+    <string name="label_reminder">Reminder</string>
+    <string name="label_repeat">Repeat</string>
+    <string name="label_daily">Daily</string>
+    <string name="label_weekly">Weekly</string>
+    <string name="label_monthly">Monthly</string>
+    <string name="label_priority">Priority</string>
+    <string name="label_save">Save</string>
+    <string name="label_edit">Edit</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="menu_action_setting">Settings</string>
+    <string name="menu_action_edit">Edit</string>
+</resources>

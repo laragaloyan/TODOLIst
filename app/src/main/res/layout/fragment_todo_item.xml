@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:padding="@dimen/activity_horizontal_margin">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/action_fragment_todo_item_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="@string/label_save"/>
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/input_fragment_todo_item_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_normal"
+            android:hint="@string/label_title"
+            android:layout_marginTop="@dimen/margin_normal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/action_fragment_todo_item_edit" />
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/input_fragment_todo_item_description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_normal"
+            android:lines="3"
+            android:gravity="top"
+            android:hint="@string/label_description"
+            android:layout_marginTop="@dimen/margin_normal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/input_fragment_todo_item_title"/>
+
+        <TextView
+            android:id="@+id/label_fragment_todo_item_date"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_normal"
+            android:layout_marginTop="@dimen/margin_normal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/input_fragment_todo_item_description"/>
+
+        <CheckBox
+            android:id="@+id/checkbox_fragment_todo_item_reminder"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_normal"
+            android:layout_marginTop="@dimen/margin_normal"
+            android:text="@string/label_reminder"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/label_fragment_todo_item_date"/>
+
+        <CheckBox
+            android:id="@+id/checkbox_fragment_todo_item_repeat"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_normal"
+            android:layout_marginTop="@dimen/margin_normal"
+            android:text="@string/label_repeat"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/checkbox_fragment_todo_item_reminder"/>
+
+        <RadioGroup
+            android:id="@+id/radio_fragment_todo_item_repeat"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_normal"
+            android:layout_marginTop="@dimen/margin_normal"
+            android:text="@string/label_reminder"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/checkbox_fragment_todo_item_repeat">
+
+            <RadioButton
+                android:id="@+id/radio_fragment_todo_item_daily"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_daily"/>
+
+            <RadioButton
+                android:id="@+id/radio_fragment_todo_item_weekly"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_weekly"/>
+
+            <RadioButton
+                android:id="@+id/radio_fragment_todo_item_monthly"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_monthly"/>
+
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/label_fragment_todo_item_priority"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_normal"
+            android:layout_marginTop="@dimen/margin_normal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/label_fragment_todo_item_priority_value"
+            app:layout_constraintTop_toBottomOf="@id/radio_fragment_todo_item_repeat"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            android:text="@string/label_priority"/>
+
+        <TextView
+            android:id="@+id/label_fragment_todo_item_priority_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_normal"
+            app:layout_constraintStart_toEndOf="@id/label_fragment_todo_item_priority"
+            app:layout_constraintEnd_toStartOf="@id/action_fragment_todo_item_priority_increase"
+            app:layout_constraintTop_toTopOf="@id/label_fragment_todo_item_priority"
+            app:layout_constraintBottom_toBottomOf="@id/label_fragment_todo_item_priority"
+            android:text="0"/>
+
+        <ImageView
+            android:id="@+id/action_fragment_todo_item_priority_increase"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_normal"
+            app:layout_constraintStart_toEndOf="@id/label_fragment_todo_item_priority_value"
+            app:layout_constraintTop_toBottomOf="@id/radio_fragment_todo_item_repeat"
+            android:src="@android:drawable/arrow_up_float"/>
+
+        <ImageView
+            android:id="@+id/action_fragment_todo_item_priority_decrease"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_normal"
+            app:layout_constraintStart_toStartOf="@id/action_fragment_todo_item_priority_increase"
+            app:layout_constraintEnd_toEndOf="@id/action_fragment_todo_item_priority_increase"
+            app:layout_constraintTop_toBottomOf="@id/action_fragment_todo_item_priority_increase"
+            android:src="@android:drawable/arrow_down_float"/>
+
+    </android.support.constraint.ConstraintLayout>
+
+</ScrollView>
