@@ -1,24 +1,55 @@
 package com.todofragments.todolist;
 
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.support.annotation.NonNull;
 
 import java.util.Date;
+import java.util.UUID;
 
-public class TodoItem implements Parcelable {
-    public static final int PRIORITY_MAX = 5;
-    public static final int PRIORITY_MIN = 0;
 
-    private String mId;
-    private String mTitle;
-    private String mDescription;
-    private Date mDate;
-    private boolean mShouldRemind;
-    private int mPriority;
-    private Repeat mRepeatType;
+@Entity
+    public class TodoItem implements  Parcelable {
 
-    public TodoItem() {
+        public static final int PRIORITY_MAX = 5;
+        public static final int PRIORITY_MIN = 0;
 
+        @PrimaryKey @NonNull
+        private String mId;
+
+        @ColumnInfo(name="title")
+        private String mTitle;
+
+        @ColumnInfo(name="decription")
+        private String mDescription;
+// how to save this field in db? Maybe a type converter?
+        @ColumnInfo(name="date")
+        private Date mDate;
+
+        @ColumnInfo(name="Reminder")
+        private Boolean mShouldRemind;
+
+        @ColumnInfo(name = "priority")
+        private int mPriority;
+// same problem mentioned above
+
+   // @ColumnInfo(name="repeat type")
+        private Repeat mRepeatType;
+   public TodoItem(UUID uuid) {
+
+    }
+
+    public TodoItem(@NonNull String mId,String mTitle,String mDescription,Date mDate,Boolean mShouldRemind,int mPriority,Repeat mRepeatType) {
+        this.mId = mId;
+        this.mTitle = mTitle;
+        this.mDescription = mDescription;
+        this.mDate = mDate;
+        this.mShouldRemind = mShouldRemind;
+        this.mPriority = mPriority;
+       this.mRepeatType = mRepeatType;
     }
 
     public String getId() {
@@ -151,7 +182,7 @@ public class TodoItem implements Parcelable {
         }
     };
 
-    private TodoItem(Parcel in) {
+    public TodoItem(Parcel in) {
         mId = in.readString();
         mTitle = in.readString();
         mDescription = in.readString();

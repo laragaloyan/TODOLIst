@@ -13,7 +13,9 @@
     <string name="label_edit">Edit</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="menu_action_setting">Settings</string>
     <string name="menu_action_edit">Edit</string>
+    <string name="delete_this_item">Delete this item?</string>
+    <string name="yes_action">Yes</string>
+    <string name="cancel_action">Cancel</string>
 </resources>

@@ -1,8 +1,10 @@
 package com.todofragments.todolist.activity;
 
+import android.app.Dialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.arch.persistence.room.Room;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -15,10 +17,16 @@ import android.widget.Toolbar;
 
 import com.todofragments.todolist.R;
 import com.todofragments.todolist.TodoItem;
+//import com.todofragments.todolist.db.DatabaseManager;
+import com.todofragments.todolist.db.TodoItemDB;
+//import com.todofragments.todolist.db.Todo_Item_Room;
 import com.todofragments.todolist.fragments.TodoItemFragment;
 import com.todofragments.todolist.fragments.TodoItemsListFragment;
 
 public class MainActivity extends AppCompatActivity {
+
+    TodoItemDB db = Room.databaseBuilder(getApplicationContext(),
+            TodoItemDB.class, "database-name").build();
 
     private View.OnClickListener mOnClickListener = new View.OnClickListener() {
         @Override
@@ -35,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
             new TodoItemsListFragment.OnFragmentInteractionListener() {
                 @Override
                 public void onEditItem(TodoItem todoItem) {
+                    db.TodoDao().insertAll(todoItem);
                     openEditTodoItem(todoItem);
                 }
             };
@@ -48,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
                 @Override
                 public void onItemChanged(TodoItem todoItem) {
+                    db.TodoDao().update(todoItem);
                     delegateItemChangeToFragment(todoItem);
                 }
             };
@@ -103,6 +113,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void delegateItemCreationToFragment(TodoItem todoItem) {
+        //insert
         mTodoItemsListFragment.addTodoItem(todoItem);
         getFragmentManager().popBackStack();
     }

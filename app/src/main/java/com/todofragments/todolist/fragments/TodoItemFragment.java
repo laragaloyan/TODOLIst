@@ -3,7 +3,6 @@ package com.todofragments.todolist.fragments;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,12 +38,7 @@ public class TodoItemFragment extends android.app.Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @return A new instance of fragment TodoItemFragment.
-     */
+
     public static TodoItemFragment newInstance(TodoItem todoItem) {
         TodoItemFragment fragment = new TodoItemFragment();
         Bundle args = new Bundle();
@@ -213,7 +207,7 @@ public class TodoItemFragment extends android.app.Fragment {
     private TodoItem createTodoItemFromInput() {
         if (mTodoItem == null) {
             // If item is newly created initialize with uuid
-            mTodoItem = new TodoItem();
+            mTodoItem = new TodoItem(UUID.randomUUID());
             mTodoItem.setId(UUID.randomUUID().toString());
         }
         mTodoItem.setTitle(mTitleInput.getText().toString());
