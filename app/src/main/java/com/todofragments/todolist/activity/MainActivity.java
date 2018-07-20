@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onEditItem(TodoItem todoItem) {
                     db.TodoDao().insertAll(todoItem);
+                   // todoItem.getRepeatType().name();
                     openEditTodoItem(todoItem);
                 }
             };

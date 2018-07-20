@@ -21,23 +21,13 @@ public class Converters {
         }
 
         @TypeConverter
-        public List<TodoItem.Repeat> storedStringToEnum(String value) {
-                List<String> dbValues = Arrays.asList(value.split("\\S"));
-                List<TodoItem.Repeat> enums = new ArrayList<>();
+        public TodoItem.Repeat storedStringToEnum(String value) {
 
-                for (String string: dbValues)
-                        enums.add(TodoItem.Repeat.valueOf(string));
-
-                return enums;
+                return TodoItem.Repeat.valueOf(value);
         }
 
         @TypeConverter
-        public String enumsToStoredString(List<TodoItem.Repeat> repeats) {
-                StringBuilder value = new StringBuilder();
-
-                for (TodoItem.Repeat repeat : repeats)
-                        value.append(repeat.name()).append(",");
-
-                return value.toString();
+        public String enumsToStoredString(TodoItem.Repeat repeat) {
+                return repeat.name();
         }
 }

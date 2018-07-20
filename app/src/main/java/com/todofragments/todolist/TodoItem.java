@@ -25,7 +25,7 @@ import java.util.UUID;
 
         @ColumnInfo(name="decription")
         private String mDescription;
-// how to save this field in db? Maybe a type converter?
+
         @ColumnInfo(name="date")
         private Date mDate;
 
@@ -34,10 +34,10 @@ import java.util.UUID;
 
         @ColumnInfo(name = "priority")
         private int mPriority;
-// same problem mentioned above
 
-   // @ColumnInfo(name="repeat type")
+        @ColumnInfo(name="repeat type")
         private Repeat mRepeatType;
+
    public TodoItem(UUID uuid) {
 
     }
@@ -84,7 +84,7 @@ import java.util.UUID;
         mDate = date;
     }
 
-    public boolean isShouldRemind() {
+    public Boolean isShouldRemind() {
         return mShouldRemind;
     }
 
